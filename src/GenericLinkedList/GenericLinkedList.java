@@ -15,11 +15,11 @@ package GenericLinkedList;
 public class GenericLinkedList <T> {
     
     private int size = 0;
-    private GenericLink<T> start = null;
+    private GenericLink<T> firstLink = null;
     
     public GenericLinkedList() {
         size = 0;
-        start = null;
+        firstLink = null;
     }
     
     public int getSize(){
@@ -31,7 +31,7 @@ public class GenericLinkedList <T> {
     }
     
     public void add(T t){
-        if (size == 0) start = new GenericLink<>(t);
+        if (size == 0) firstLink = new GenericLink<>(t);
         else this.getLastLink().setNext(new GenericLink<>(t));
         size++;
     }
@@ -39,10 +39,10 @@ public class GenericLinkedList <T> {
     public void add(T t, int n){
         if ((n >= size) || (n < 0)) return;
         else if (n == 0) {
-            if (start == null) start = new GenericLink<>(t);
+            if (firstLink == null) firstLink = new GenericLink<>(t);
             else {
-                GenericLink<T> tempLink = new GenericLink<>(t, start);
-                start = tempLink;
+                GenericLink<T> tempLink = new GenericLink<>(t, firstLink);
+                firstLink = tempLink;
             }
         } else {
             GenericLink<T> prevLink = this.getLinkAt(n - 1);
@@ -53,7 +53,7 @@ public class GenericLinkedList <T> {
     
     public void remove(int n){
         if (n >= size || n < 0) return;
-        else if (n == 0) start = start.getNext();
+        else if (n == 0) firstLink = firstLink.getNext();
         else {
             GenericLink<T> prevLink = this.getLinkAt(n - 1);
             prevLink.setNext(prevLink.getNext().getNext());
@@ -64,7 +64,7 @@ public class GenericLinkedList <T> {
     private GenericLink<T> getLastLink(){
         if (size == 0) return null;
         else {
-            GenericLink<T> currentLink = start;
+            GenericLink<T> currentLink = firstLink;
             while(currentLink.getNext() != null) 
                 currentLink = currentLink.getNext();
             return currentLink;
@@ -72,10 +72,10 @@ public class GenericLinkedList <T> {
     }
     
     private GenericLink<T> getLinkAt(int n){
-        if (n == 0) return start;
+        if (n == 0) return firstLink;
         else if (n >= size || n < 0) return null;
         else {
-            GenericLink<T> currentLink = start;
+            GenericLink<T> currentLink = firstLink;
             for (int i = 0; i < n; i++){
                 currentLink = currentLink.getNext();
             }
