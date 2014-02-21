@@ -3,10 +3,8 @@
 *
 * A general-purpose linked list class built using generics
 *
-* Version 1.0
-* 2/21/2014
-*
 * Michael Jacobs
+* 2/21/2014
 */
 
 package GenericLinkedList;

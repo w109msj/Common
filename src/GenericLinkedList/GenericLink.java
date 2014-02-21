@@ -4,10 +4,8 @@
 * A general-purpose link class built with generics
 * to be used with the GenericLinkedList class
 *
-* Version 1.0
-* 2/21/2014
-*
 * Michael Jacobs
+* 2/21/2014
 */
 
 package GenericLinkedList;
